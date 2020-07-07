@@ -102,7 +102,10 @@
                     <th>{{item.name}}</th>
                     <th class="pl-4rem">{{item.oprice}}</th>
                     <th class="pl-4rem">{{item.price}}</th>
-                    <th>{{item.activated}}</th>
+                    <th v-if="item.enabled">啟用</th>
+                    <th v-else>未啟用</th>
+                    <th v-if="item.hotstar">是</th>
+                    <th v-else>否</th>
                     <th>{{item.hotstar}}</th>
                     <th>
                         <button class="btn btn-outline-blue" data-toggle="modal" data-target="#editModal" @click="editProduct(index)">編輯</button>
@@ -205,8 +208,8 @@
             unit: '',
             content: '',
             imgurl: '',
-            hotstar: false,
-            enabled: false,
+            hotstar: 0,
+            enabled: 0,
         },
         productlist:[
             {
@@ -218,8 +221,8 @@
                 unit: '杯',
                 content: '無內容',
                 imgurl: 'https://picsum.photos/500/400?random=2',
-                hotstar: false,
-                enabled: true,
+                hotstar: 0,
+                enabled: 1,
             }
         ]
     },
@@ -237,8 +240,8 @@
             unit: '',
             content: '',
             imgurl: '',
-            hotstar: false,
-            enabled: false,});
+            hotstar: 0,
+            enabled: 0,});
           console.log( this.tempdata);
         },
         PushProductList () {
@@ -257,7 +260,7 @@
           this.tempdata={};
         },
         deleteProduct(key) {
-          this.proud
+          this.productlist
         }
     }
 })
